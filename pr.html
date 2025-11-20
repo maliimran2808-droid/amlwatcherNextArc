@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <title>Beginner Carousel Slider</title>
+  
+    <style>
+        /* --- Basic Styling (Makes it look nice) --- */
+        body {
+            font-family: sans-serif;
+            background-color: #f4f4f9;
+            /* These three lines center everything on the page */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        /* This container holds both the carousel and the buttons */
+      
+    </style>
+</head>
+<body>
+
+    <div class="carousel-wrapper">
+       <div class="slide-btn">
+        <button><i class="fa f-regular fa-arrow-left"></i></button>
+        <button><i class="fa f-regular fa-arrow-right"></i></button>
+      </div>
+        <!-- The Carousel Box (the visible part) -->
+        <div class="carousel-box">
+            <!-- The Track (this is what moves) -->
+            <div class="carousel-track">
+     <div class="slider-foot">
+          <div class="slider-content container-fluid">
+            <div class="row">
+              <div id="slider-left" class="col-12 col-md-8 col-lg-8">
+                <div class="stars">
+                  <img src="./imgs/star.svg" alt=""><img src="./imgs/star.svg" alt=""><img src="./imgs/star.svg"
+                    alt=""><img src="./imgs/star.svg" alt=""><img src="./imgs/star.svg" alt="">
+                </div>
+                <p>AML Watcher maintains such features as 1300 plus diverse watch-list databases, over 200 comprehensive
+                  sanction regimes, 235 plus countries while ensuring comprehensive coverage, over 5000 reputed and
+                  reliable media sources with global coverage, 80 plus languages enabling multilingual reach, and
+                  finally over 100,000 unique reliable data sources.</p>
+                <a href="#">Try & See The Difference</a>
+              </div>
+              <div id="slider-right" class="col-12 col-md-4 col-lg-4">
+                <div class="pfp">
+                  <img src="./imgs/Logos-SCROLL/pfp1.svg" alt="">
+                </div>
+                <strong>Robert L. Williams III</strong>
+                <p>Sanctions Advisor / Associate Director</p>
+              </div>
+            </div>
+          </div>
+        </div>
+         <div class="slider-foot">
+          <div class="slider-content container-fluid">
+            <div class="row">
+              <div id="slider-left" class="col-12 col-md-8 col-lg-8">
+                <div class="stars">
+                  <img src="./imgs/star.svg" alt=""><img src="./imgs/star.svg" alt=""><img src="./imgs/star.svg"
+                    alt=""><img src="./imgs/star.svg" alt=""><img src="./imgs/star.svg" alt="">
+                </div>
+                <p>AML Watcher maintains such features as 1300 plus diverse watch-list databases, over 200 comprehensive
+                  sanction regimes, 235 plus countries while ensuring comprehensive coverage, over 5000 reputed and
+                  reliable media sources with global coverage, 80 plus languages enabling multilingual reach, and
+                  finally over 100,000 unique reliable data sources.</p>
+                <a href="#">Try & See The Difference</a>
+              </div>
+              <div id="slider-right" class="col-12 col-md-4 col-lg-4">
+                <div class="pfp">
+                  <img src="./imgs/Logos-SCROLL/pfp1.svg" alt="">
+                </div>
+                <strong>Robert L. Williams III</strong>
+                <p>Sanctions Advisor / Associate Director</p>
+              </div>
+            </div>
+          </div>
+        </div>
+         <div class="slider-foot">
+          <div class="slider-content container-fluid">
+            <div class="row">
+              <div id="slider-left" class="col-12 col-md-8 col-lg-8">
+                <div class="stars">
+                  <img src="./imgs/star.svg" alt=""><img src="./imgs/star.svg" alt=""><img src="./imgs/star.svg"
+                    alt=""><img src="./imgs/star.svg" alt=""><img src="./imgs/star.svg" alt="">
+                </div>
+                <p>AML Watcher maintains such features as 1300 plus diverse watch-list databases, over 200 comprehensive
+                  sanction regimes, 235 plus countries while ensuring comprehensive coverage, over 5000 reputed and
+                  reliable media sources with global coverage, 80 plus languages enabling multilingual reach, and
+                  finally over 100,000 unique reliable data sources.</p>
+                <a href="#">Try & See The Difference</a>
+              </div>
+              <div id="slider-right" class="col-12 col-md-4 col-lg-4">
+                <div class="pfp">
+                  <img src="./imgs/Logos-SCROLL/pfp1.svg" alt="">
+                </div>
+                <strong>Robert L. Williams III</strong>
+                <p>Sanctions Advisor / Associate Director</p>
+              </div>
+            </div>
+          </div>
+        </div>
+            </div>
+        </div>
+
+        <!-- The Buttons (outside the box) -->
+        <div class="carousel-buttons">
+            <button id="button-left" class="nav-button">Left</button>
+            <button id="button-right" class="nav-button">Right</button>
+        </div>
+    </div>
+
+
+    <script>
+        // --- JAVASCRIPT FOR THE CAROUSEL ---
+        // We will write all our code inside this block to make sure the HTML is loaded first.
+
+        // --- 1. GRAB THE HTML ELEMENTS WE NEED ---
+        
+        // The track that holds and moves the slides
+        const track = document.querySelector('.carousel-track');
+        
+        // All the individual slides
+        const slides = Array.from(track.children);
+        
+        // The "right" button
+        const nextButton = document.getElementById('button-right');
+        
+        // The "left" button
+        const prevButton = document.getElementById('button-left');
+
+        // Get the width of one slide. We'll use this to calculate how much to move the track.
+        const slideWidth = slides[0].getBoundingClientRect().width;
+        
+        
+        // --- 2. ARRANGE THE SLIDES NEXT TO EACH OTHER ---
+        
+        // We can do this in JS, but it's easier and better to do it in CSS (with display:flex).
+        // The code below is just for demonstration if you wanted to do it with JS.
+        // For a beginner, it's good to know both exist, but we will rely on our CSS.
+        /*
+        slides.forEach((slide, index) => {
+            slide.style.left = slideWidth * index + 'px';
+        });
+        */
+
+
+        // --- 3. SET UP OUR STATE ---
+        
+        // We need to know which slide we are currently on.
+        // We start at the first slide, which has an index of 0.
+        let currentIndex = 0;
+
+
+        // --- 4. CREATE A FUNCTION TO MOVE THE SLIDES ---
+        
+        // This function will take a target index and move the track to that slide.
+        const moveToSlide = (targetIndex) => {
+            // Calculate the amount to move: slide width * the index of the target slide
+            const amountToMove = slideWidth * targetIndex;
+            
+            // Move the track by changing its 'transform' style property.
+            // We use a negative value because we are moving it to the left.
+            track.style.transform = 'translateX(-' + amountToMove + 'px)';
+            
+            // Update the current index so we know where we are.
+            currentIndex = targetIndex;
+        }
+
+
+        // --- 5. MAKE THE BUTTONS WORK ---
+        
+        // When the user clicks the "right" button...
+        nextButton.addEventListener('click', () => {
+            // Figure out the index of the next slide
+            let nextIndex = currentIndex + 1;
+            
+            // This is the "looping" part. If we are at the last slide,
+            // the next slide should be the first one (index 0).
+            if (nextIndex >= slides.length) {
+                nextIndex = 0;
+            }
+            
+            // Call our function to move to the next slide.
+            moveToSlide(nextIndex);
+        });
+
+        // When the user clicks the "left" button...
+        prevButton.addEventListener('click', () => {
+            // Figure out the index of the previous slide
+            let prevIndex = currentIndex - 1;
+            
+            // This is the "looping" part. If we are at the first slide (index 0),
+            // the previous slide should be the last one.
+            if (prevIndex < 0) {
+                prevIndex = slides.length - 1; // The last slide's index is total slides - 1
+            }
+            
+            // Call our function to move to the previous slide.
+            moveToSlide(prevIndex);
+        });
+
+    </script>
+
+</body>
+</html>
